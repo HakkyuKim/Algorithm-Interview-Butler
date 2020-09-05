@@ -1,0 +1,42 @@
+@page "/solved-list"
+
+<div class="solved-list list">
+  <div class="solved-list-header">
+    <h3>@solved.Title</h3>
+  </div>
+  <div class="solved-list-items">
+    <ul>
+    @foreach(var item in solved.ListItems){
+      <li>
+        <p>@item.AlgorithmProblem.ID</p>
+        <p>@item.AlgorithmProblem.Title</p>
+        <p>@item.AlgorithmProblem.Difficulty</p>
+        @{
+          double acceptanceRate = (double)item.AlgorithmProblem.Accepted/item.AlgorithmProblem.Submitted;
+        }
+        <p>@acceptanceRate</p>
+        <p>@item.AlgorithmProblem.Accepted</p>
+        <p>@item.AlgorithmProblem.Submitted</p>
+        <p>@item.Interviewer.Name</p>
+        <p>@item.Interviewee.Name</p>
+        <p>@item.SolvedDate</p>
+        <p>@item.SolvingTime</p>
+      </li>
+    }
+  </ul>
+  </div>
+</div>
+
+@code{
+  ItemsList solved = new ItemsList();
+  
+  protected override void OnInitialized(){
+    solved.Title = "Solved Problems";
+    solved.ListItems = new List<InterviewProblem>{
+        InterviewProblem.CreateTestData(),
+        InterviewProblem.CreateTestData(),
+        InterviewProblem.CreateTestData()
+      };
+  }
+
+}
