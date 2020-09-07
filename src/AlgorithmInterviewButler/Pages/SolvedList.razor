@@ -4,39 +4,43 @@
   <div class="solved-list-header">
     <h3>@solved.Title</h3>
   </div>
+  <div class="solved-list-fields">
+    <ul>
+      @foreach (var item in solved.RowHeader)
+      {
+          <li>
+            <button @onclick="@(e => SortByField(e, item))">@item.ToString()</button>
+          </li>
+      }
+    </ul>
+  </div>
   <div class="solved-list-items">
     <ul>
-    @foreach(var item in solved.ListItems){
-      <li>
-        <p>@item.AlgorithmProblem.ID</p>
-        <p>@item.AlgorithmProblem.Title</p>
-        <p>@item.AlgorithmProblem.Difficulty</p>
-        @{
-          double acceptanceRate = (double)item.AlgorithmProblem.Accepted/item.AlgorithmProblem.Submitted;
+        @foreach(var item in solved.ListItems){
+          <li>
+          @foreach (var field in solved.RowHeader){
+            <p>@solved.GetValueByField(item, field)</p>
+          }
+          </li>
         }
-        <p>@acceptanceRate</p>
-        <p>@item.AlgorithmProblem.Accepted</p>
-        <p>@item.AlgorithmProblem.Submitted</p>
-        <p>@item.Interviewer.Name</p>
-        <p>@item.Interviewee.Name</p>
-        <p>@item.SolvedDate</p>
-        <p>@item.SolvingTime</p>
-      </li>
-    }
   </ul>
   </div>
 </div>
 
 @code{
-  ItemsList solved = new ItemsList();
-  
-  protected override void OnInitialized(){
-    solved.Title = "Solved Problems";
-    solved.ListItems = new List<InterviewProblem>{
-        InterviewProblem.CreateTestData(),
-        InterviewProblem.CreateTestData(),
-        InterviewProblem.CreateTestData()
-      };
+  ItemsList solved;
+
+  protected override void OnInitialized()
+  {
+    solved = ItemsList.CreateSolvedList();
   }
 
+  private void SortByField(MouseEventArgs eventArgs, ItemsList.Field field)
+  {
+    try{
+    solved.SortByFields(field, true);
+    }catch(Exception e){
+      Console.WriteLine("[Debug]: " + e.Message);
+    }
+  }
 }
