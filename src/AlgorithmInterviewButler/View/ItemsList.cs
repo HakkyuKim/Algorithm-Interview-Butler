@@ -122,5 +122,25 @@ namespace AlgorithmInterviewButler.View
       }
       return solvedList;
     }
+
+    public static ItemsList CreateLeetCodeProblemsList()
+    {
+      ItemsList leetcodeList = new ItemsList();
+      leetcodeList.Title = "Leetcode problems";
+      leetcodeList.RowHeader = new List<Field>{
+        Field.ProblemID,
+        Field.ProblemTitle,
+        Field.ProblemDifficulty,
+      };
+      leetcodeList.ListItems = new List<InterviewProblem>();
+      AlgorithmProblem.ReadProblems();
+      List<AlgorithmProblem> leetcodeProblems = AlgorithmProblem.ProblemsArchive;
+      foreach(AlgorithmProblem algoProblem in leetcodeProblems){
+        leetcodeList.ListItems.Add(new InterviewProblem(){
+          AlgorithmProblem = algoProblem
+        });
+      }
+      return leetcodeList;
+    }
   }
 }

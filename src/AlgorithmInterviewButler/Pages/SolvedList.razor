@@ -28,11 +28,12 @@
 </div>
 
 @code{
-  ItemsList solved;
+  ItemsList solved, leetcodeList;
 
   protected override void OnInitialized()
   {
-    solved = ItemsList.CreateSolvedList();
+    solved = ItemsList.CreateLeetCodeProblemsList();
+    //leetcodeList = ItemsList.CreateLeetCodeProblemsList();
   }
 
   private void SortByField(MouseEventArgs eventArgs, ItemsList.Field field)
