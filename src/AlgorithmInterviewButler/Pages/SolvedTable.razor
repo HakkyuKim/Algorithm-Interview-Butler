@@ -1,0 +1,44 @@
+@page "/solved-table"
+
+<div class="solved-table table">
+  <div class="solved-table-header">
+    <h3>@viewModel.Title</h3>
+  </div>
+  <div class="solved-table-fields">
+    <ul>
+      @foreach (var field in viewModel.Fields)
+      {
+          <li>
+            <button @onclick="@(e => SortByField(e, field))">@field.ToString()</button>
+          </li>
+      }
+    </ul>
+  </div>
+  <div class="solved-table-records">
+    <ul>
+        @foreach(var record in viewModel.Records){
+          <li>
+          @foreach (var field in viewModel.Fields){
+            <p>@viewModel.GetValueByField(record, field)</p>
+          }
+          </li>
+        }
+  </ul>
+  </div>
+</div>
+
+@code{
+  SolvedTableViewModel viewModel = new SolvedTableViewModel();
+
+  private void SortByField(MouseEventArgs eventArgs, Field field)
+  {
+    try
+    {
+      viewModel.SortByFields(field, true);
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine("[Debug]: " + e.Message);
+    }
+  }
+}
