@@ -7,7 +7,9 @@
 ## :hammer: 개발환경
 
 * 사용언어: HTML, CSS, C#
-* 코드 에디터/IDE: Visual Studio Code + Extension Plugins([Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji))
+* 코드 에디터/IDE: Visual Studio Code + Extensions
+  *  [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
+  *  [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
 * 프레임워크: [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) (.NET 웹앱 개발 프레임워크)
 * 운영체제: Windows 10
 
