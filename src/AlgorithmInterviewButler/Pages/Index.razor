@@ -1,10 +1,20 @@
 ﻿@page "/"
 
-<div>
-  <div>
-    <SolvedTable></SolvedTable>
-  </div>
-  <div>
-    <SolvingTable></SolvingTable>
-  </div>
-</div>
+<section id="main-page">
+  <section id="workspace">
+    <div class="workspace-table">
+      <SolvingTable></SolvingTable>
+    </div>
+    <div class="workspace-random-box">
+      <RandomPickBox></RandomPickBox>
+    </div>
+  </section>
+  <section id="archive">
+    <div class="archive-table">
+      <SolvedTable></SolvedTable>
+    </div>
+  </section>
+</section>
+
+@{
+}

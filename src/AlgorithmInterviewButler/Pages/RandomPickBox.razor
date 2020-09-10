@@ -1,0 +1,14 @@
+<div>
+  <button @onclick="OnRandomPickClicked">Random Problem</button>
+  <p>@interviewProblem.AlgorithmProblem.ID</p>
+  <p>@interviewProblem.AlgorithmProblem.Title</p>
+</div>
+
+@code{
+  RandomPickBoxViewModel randomPickBoxViewModel = new RandomPickBoxViewModel();
+  InterviewProblem interviewProblem = InterviewProblem.MakeAnyProblem();
+  
+  private void OnRandomPickClicked(){
+    interviewProblem = randomPickBoxViewModel.GetRandomProblem();
+  }
+}
