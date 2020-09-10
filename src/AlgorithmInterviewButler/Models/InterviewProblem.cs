@@ -1,4 +1,5 @@
 using System;
+
 namespace AlgorithmInterviewButler.Models
 {
   public class InterviewProblem
@@ -10,5 +11,13 @@ namespace AlgorithmInterviewButler.Models
     public Person Interviewee { get; set; }
     public DateTime SolvedDate { get; set; }
     public DateTime SolvingTime { get; set; }
+
+    public static InterviewProblem MakeAnyProblem(){
+      InterviewProblem interviewProblem = new InterviewProblem();
+      interviewProblem.AlgorithmProblem = new AlgorithmProblem();
+      interviewProblem.Interviewer = new Person();
+      interviewProblem.Interviewee = new Person();
+      return interviewProblem;
+    }
   }
 }

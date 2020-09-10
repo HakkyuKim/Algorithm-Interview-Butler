@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using AlgorithmInterviewButler.Models;
@@ -13,6 +14,10 @@ namespace AlgorithmInterviewButler.Services
 
     static InterviewProblemsDB(){
       LoadData("../../data.json");
+    }
+
+    public static List<int> GetKeys(){
+      return _cachedData.Keys.ToList();
     }
 
     private static void LoadData(string filePath)

@@ -31,7 +31,8 @@ namespace AlgorithmInterviewButler.ViewModels {
       {
         try
         {
-          Records.Add(InterviewProblemsDB.GetProblem(id));
+          InterviewProblem interviewProblem = InterviewProblemsDB.GetProblem(id);
+          if(interviewProblem != null) Records.Add(interviewProblem);
         }
         catch (Exception ex)
         {
